@@ -2,21 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Models\Product;
-use App\Http\Models\Product_season;
-use App\Http\Models\Season;
+use App\Models\Product;
+use App\Models\Product_season;
+use App\Models\Season;
 use Illuminate\Http\Request;
+use App\Http\Requests\ProductRequest;
+
 
 class ProductController extends Controller
 {
-    public function index()
+    public function index(ProductRequest $request)
     {
-        return view('index');
+        $form = $request->all();
+        Product::create($form); 
+        return redirect('/producs');
     }
 
-    public function register()
+    public function create()
     {
-        return view('register');
+        return view('create');
     }
 
     public function search()

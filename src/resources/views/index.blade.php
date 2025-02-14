@@ -15,7 +15,8 @@
             <input class="" type="submit" value="+商品を追加">
         </div>
     </form>
-    
+
+
 
     <form action="/products/search" method="post">
         @csrf
@@ -28,7 +29,14 @@
     </form>
 
     <form actione="/products/{productId}" method="post">
-        商品表示がめん
+        @foreach ($products as $product)
+            <tr>
+                <!-- <td>{{$product->image}}</td> -->
+                <td>{{$product->name}}</td>
+                <td>{{$product->price}}</td>
+            
+            </tr>
+        @endforeach
     </form>
 
     <h2>価格順で表示</h2>
